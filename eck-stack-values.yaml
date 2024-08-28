@@ -1,0 +1,87 @@
+# eck-stack-full-values.yaml
+global:
+  kibana:
+    enabled: true
+
+elasticsearch:
+  enabled: true
+  replicas: 1
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      cpu: 1
+      memory: 4Gi
+
+kibana:
+  enabled: true
+  replicas: 1
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 400m
+      memory: 1Gi
+
+logstash:
+  enabled: true
+  replicas: 1
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 400m
+      memory: 1Gi
+
+metricbeat:
+  enabled: true
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+  kibanaHosts: "http://kibana-kb-http:5601"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 200m
+      memory: 512Mi
+
+filebeat:
+  enabled: true
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+  kibanaHosts: "http://kibana-kb-http:5601"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 200m
+      memory: 512Mi
+
+apmServer:
+  enabled: true
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+  kibanaHosts: "http://kibana-kb-http:5601"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 200m
+      memory: 512Mi
+
+enterpriseSearch:
+  enabled: true
+  elasticsearchHosts: "http://elasticsearch-master:9200"
+  kibanaHosts: "http://kibana-kb-http:5601"
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1
+      memory: 2Gi
